@@ -80,8 +80,8 @@
                             <tr>
                                 <th>Classroom</th>
                                 <th class="text-center">Students</th>
-                                <th class="text-center">Submissions</th>
-                                <th class="text-center">Pending</th>
+                                <th class="text-center">Drafts</th>
+                                <th class="text-center">Submitted</th>
                                 <th>Join Code</th>
                                 <th></th>
                             </tr>
@@ -100,11 +100,11 @@
                                     <span class="badge bg-secondary">{{ classroom.student_count }}</span>
                                 </td>
                                 <td class="text-center">
-                                    <span class="badge bg-info">{{ classroom.submission_count }}</span>
+                                    <span class="badge bg-info">{{ classroom.drafts_count }}</span>
                                 </td>
                                 <td class="text-center">
-                                    {% if classroom.pending_count > 0 %}
-                                    <span class="badge bg-warning text-dark">{{ classroom.pending_count }}</span>
+                                    {% if classroom.submitted_count > 0 %}
+                                    <span class="badge bg-warning text-dark">{{ classroom.submitted_count }}</span>
                                     {% else %}
                                     <span class="badge bg-success">0</span>
                                     {% endif %}
@@ -113,7 +113,7 @@
                                     <code class="bg-light px-2 py-1 rounded">{{ classroom.join_code }}</code>
                                 </td>
                                 <td>
-                                    <a href="{% url 'classroom_submissions' classroom.pk %}" 
+                                    <a href="{% url 'classroom_detail' classroom.pk %}" 
                                        class="btn btn-sm btn-outline-primary">
                                         <i class="bi bi-folder"></i>
                                     </a>

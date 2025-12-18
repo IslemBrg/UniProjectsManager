@@ -431,7 +431,7 @@ class SubmissionFilterForm(forms.Form):
         ('SUBMITTED', 'Submitted'),
         ('GRADED', 'Graded'),
     ]
-    
+
     status = forms.ChoiceField(
         choices=STATUS_CHOICES,
         required=False,
@@ -480,6 +480,7 @@ class SubmissionFilterForm(forms.Form):
             if user.is_teacher:
                 # Teachers see their own classrooms
                 self.fields['classroom'].queryset = Classroom.objects.for_teacher(user)
+                self.fields['status'].choices = [choice for choice in self.fields['status'].choices if choice[0] != 'DRAFT']
             else:
                 # Students see classrooms they've joined
                 self.fields['classroom'].queryset = Classroom.objects.for_student(user)

@@ -155,12 +155,19 @@ class ProjectSubmissionManager(models.Manager):
         return self.filter(collaborators=student)
     
     def for_teacher(self, teacher):
-        """Get all submissions in classrooms owned by the teacher"""
-        return self.filter(classroom__teacher=teacher)
+        """Get all submissions in classrooms owned by the teacher where their status is SUBMITTED"""
+        return self.filter(classroom__teacher=teacher, status=ProjectSubmission.Status.SUBMITTED)
     
-    def for_classroom(self, classroom):
-        """Get all submissions in a specific classroom"""
-        return self.filter(classroom=classroom)
+    def for_classroom(self, classroom, teacher=None):
+        """
+        Get all submissions in a specific classroom.
+        If teacher is provided, only return SUBMITTED status for permission consistency.
+        """
+        qs = self.filter(classroom=classroom)
+        if teacher is not None:
+            # Only show submitted projects to teachers
+            qs = qs.filter(status=ProjectSubmission.Status.SUBMITTED)
+        return qs
     
     def submitted(self):
         """Get only submitted (non-draft) projects"""

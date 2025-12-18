@@ -131,7 +131,7 @@
                 <h5 class="mb-0">
                     <i class="bi bi-folder me-2"></i>Submissions
                 </h5>
-                <a href="{% url 'classroom_submissions' classroom.pk %}" class="btn btn-sm btn-outline-primary">
+                <a href="{% url 'submission_list' %}?classroom={{ classroom.pk }}" class="btn btn-sm btn-outline-primary">
                     View All
                 </a>
             </div>
@@ -229,7 +229,7 @@
                     <strong>{{ member_count }}</strong>
                 </div>
                 <div class="d-flex justify-content-between mb-2">
-                    <span class="text-muted">Total Submissions</span>
+                    <span class="text-muted">Total Projects</span>
                     <strong>{{ classroom.get_submission_count }}</strong>
                 </div>
                 <div class="d-flex justify-content-between mb-2">
