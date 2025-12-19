@@ -146,7 +146,7 @@
                     <td>
                         <small class="text-muted">
                             {% if submission.submitted_at %}
-                            {{ submission.submitted_at|date:"M d" }}
+                            {{ submission.submitted_at|date:"M d, Y, g:i A" }}
                             {% else %}
                             --
                             {% endif %}

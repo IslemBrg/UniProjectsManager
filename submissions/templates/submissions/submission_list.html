@@ -101,9 +101,9 @@
                     <td>
                         <small class="text-muted">
                             {% if submission.submitted_at %}
-                            {{ submission.submitted_at|date:"M d, Y" }}
+                            {{ submission.submitted_at|date:"M d, Y, g:i A" }}
                             {% else %}
-                            {{ submission.created_at|date:"M d, Y" }}
+                            {{ submission.created_at|date:"M d, Y, g:i A" }}
                             {% endif %}
                         </small>
                     </td>
